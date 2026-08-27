@@ -30,6 +30,11 @@ int main(void)
     assert(snapshot.feature_count > 0U);
     assert(snapshot.panel_count > 0U);
     assert(snapshot.layout_count > 0U);
+    assert(snapshot.projected_layout_count == snapshot.layout_count);
+    assert(snapshot.projected_window_count >= snapshot.panel_count);
+    assert(snapshot.default_layout_window_count > 0U);
+    assert(snapshot.layout_runtime_ready);
+    assert(snapshot.layout_projection_complete);
     assert(snapshot.missing_surface_count == 0U);
     assert(snapshot.covered_surface_count == snapshot.panel_count);
     assert(snapshot.runnable);
