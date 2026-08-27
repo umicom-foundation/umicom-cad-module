@@ -1,0 +1,39 @@
+schema: umicom.application.v1
+
+application:
+  id: org.umicom.cad
+  name: Umicom CAD
+  short_name: CAD
+  version: 0.1.0
+  executable: umicom-cad-console
+  aliases: [cad]
+
+framework:
+  minimum_version: 0.9.0
+  compatible_major: 0
+
+frontends:
+  - console
+
+entry:
+  kind: workbench
+  taskbar_group: design
+  pinned_by_default: false
+  default_layout: design
+
+capabilities:
+  - umicom.cad
+  - umicom.designer
+  - umicom.data
+  - umicom.application.experience
+  - umicom.application.federation
+
+source_layout:
+  product_root: src
+  composition_root: src
+  console_frontend: src/console
+
+boundaries:
+  owns_reusable_framework_logic: false
+  owns_persistence: false
+  consumes_framework_services: true
