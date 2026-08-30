@@ -16,7 +16,7 @@
 #ifndef UMICOM_CAD_PRODUCTISATION_CONTRIBUTION_H
 #define UMICOM_CAD_PRODUCTISATION_CONTRIBUTION_H
 
-#include "umicom/application/productisation/adoption.h"
+#include "umicom/application/productisation/session.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -26,6 +26,8 @@ const UmiProductApplicationAdoption *
 umi_cad_productisation_contribution(void);
 UmiStatus umi_cad_productisation_snapshot(
     UmiProductApplicationAdoptionSnapshot *out_snapshot);
+UmiStatus umi_cad_product_session_init(
+    UmiProductApplicationSession *out_session);
 
 #ifdef __cplusplus
 }
