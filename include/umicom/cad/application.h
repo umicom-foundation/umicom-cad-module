@@ -5,9 +5,12 @@
  * PURPOSE:
  *   Expose the thin application composition over Framework-owned experience metadata and services.
  *
- * Created by: Sammy Hegab
- * Organisation: Umicom Foundation
- * Licence: MIT
+ * AUTHOR AND ORGANISATION:
+ * Sammy Hegab
+ * Umicom Foundation
+ *
+ * LICENCE:
+ * MIT
  *---------------------------------------------------------------------------*/
 
 #ifndef UMICOM_CAD_APPLICATION_H

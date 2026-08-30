@@ -6,9 +6,12 @@
 #   Build a thin C23 product composition over Framework-owned application
 #   experience, runtime and workbench contracts.
 #
-# Created by: Sammy Hegab
-# Organisation: Umicom Foundation
-# Licence: MIT
+# AUTHOR AND ORGANISATION:
+#   Sammy Hegab
+#   Umicom Foundation
+#
+# LICENCE:
+#   MIT
 #-----------------------------------------------------------------------------
 cmake_minimum_required(VERSION 3.24)
 

@@ -5,9 +5,12 @@
  * PURPOSE:
  *   Bind the thin product to the Framework-owned application workspace runtime without duplicating services.
  *
- * Created by: Sammy Hegab
- * Organisation: Umicom Foundation
- * Licence: MIT
+ * AUTHOR AND ORGANISATION:
+ * Sammy Hegab
+ * Umicom Foundation
+ *
+ * LICENCE:
+ * MIT
  *---------------------------------------------------------------------------*/
 
 #ifndef UMICOM_CAD_RUNTIME_H

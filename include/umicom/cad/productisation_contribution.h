@@ -6,9 +6,12 @@
  *   Declare this thin module's adoption of Framework-owned application
  *   experience, components, layouts and productisation evidence.
  *
- * Created by: Sammy Hegab
- * Organisation: Umicom Foundation
- * Licence: MIT
+ * AUTHOR AND ORGANISATION:
+ * Sammy Hegab
+ * Umicom Foundation
+ *
+ * LICENCE:
+ * MIT
  *---------------------------------------------------------------------------*/
 #ifndef UMICOM_CAD_PRODUCTISATION_CONTRIBUTION_H
 #define UMICOM_CAD_PRODUCTISATION_CONTRIBUTION_H

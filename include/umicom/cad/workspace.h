@@ -5,9 +5,12 @@
  * PURPOSE:
  *   Expose product workspace lookups without duplicating Framework workbench or layout logic.
  *
- * Created by: Sammy Hegab
- * Organisation: Umicom Foundation
- * Licence: MIT
+ * AUTHOR AND ORGANISATION:
+ * Sammy Hegab
+ * Umicom Foundation
+ *
+ * LICENCE:
+ * MIT
  *---------------------------------------------------------------------------*/
 
 #ifndef UMICOM_CAD_WORKSPACE_H
