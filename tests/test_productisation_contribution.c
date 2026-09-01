@@ -17,6 +17,7 @@
 #include <string.h>
 
 #include "umicom/cad/productisation_contribution.h"
+#include "umicom/application/productisation/workspace_guide_portfolio.h"
 
 int main(void)
 {
@@ -25,6 +26,11 @@ int main(void)
     UmiProductApplicationAdoptionSnapshot snapshot;
     UmiProductApplicationSession session;
     UmiProductApplicationSessionSnapshot session_snapshot;
+    UmiProductWorkspaceGuide workspace_guide;
+    const UmiProductWorkspaceGuideChoice *recommended_workspace;
+    UmiProductAdoptionRegistry adoption_registry;
+    UmiProductWorkspaceGuidePortfolio guide_portfolio;
+    const UmiProductWorkspaceGuideSummary *portfolio_summary;
     UmiProductApplicationSessionCommand command = {
         sizeof(UmiProductApplicationSessionCommand),
         UMI_PRODUCT_SESSION_REFRESH_READINESS,
@@ -65,5 +71,33 @@ int main(void)
     assert(session_snapshot.readiness_percent <= 100U);
     assert(session_snapshot.runnable);
     assert(session_snapshot.acceptance_ready);
+    assert(umi_cad_product_workspace_guide(&workspace_guide) ==
+           UMI_STATUS_OK);
+    assert(umi_product_workspace_guide_validate(&workspace_guide) ==
+           UMI_STATUS_OK);
+    assert(workspace_guide.choice_count == snapshot.layout_count);
+    assert(workspace_guide.total_panel_placements ==
+           snapshot.projected_window_count);
+    assert(workspace_guide.readiness_percent <= 100U);
+    recommended_workspace =
+        umi_product_workspace_guide_recommended(&workspace_guide);
+    assert(recommended_workspace != NULL);
+    assert(recommended_workspace->default_layout);
+    assert(recommended_workspace->panel_count ==
+           snapshot.default_layout_window_count);
+    /* Prove this thin product can participate in a suite launcher portfolio. */
+    umi_product_adoption_registry_init(&adoption_registry);
+    assert(umi_product_adoption_registry_register(
+        &adoption_registry, adoption) == UMI_STATUS_OK);
+    assert(umi_product_workspace_guide_portfolio_build(
+        &adoption_registry, &guide_portfolio) == UMI_STATUS_OK);
+    assert(guide_portfolio.application_count == 1U);
+    portfolio_summary = umi_product_workspace_guide_portfolio_find(
+        &guide_portfolio, adoption->application_id);
+    assert(portfolio_summary != NULL);
+    assert(portfolio_summary->layout_choice_count ==
+           workspace_guide.choice_count);
+    assert(strcmp(portfolio_summary->recommended_layout_id,
+                  workspace_guide.recommended_layout_id) == 0);
     return 0;
 }

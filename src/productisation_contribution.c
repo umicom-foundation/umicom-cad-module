@@ -48,3 +48,10 @@ UmiStatus umi_cad_product_session_init(
     return umi_product_application_session_init(
         &ADOPTION, out_session);
 }
+
+/* Prepare Framework-owned workspace choices for this product's welcome UI. */
+UmiStatus umi_cad_product_workspace_guide(
+    UmiProductWorkspaceGuide *out_guide)
+{
+    return umi_product_workspace_guide_build(&ADOPTION, out_guide);
+}
