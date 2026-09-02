@@ -23,10 +23,22 @@
 extern "C" {
 #endif
 
+/**
+ * Provide the cad productisation contribution operation used by this module and its client
+ * applications.
+ */
 const UmiProductApplicationAdoption *
 umi_cad_productisation_contribution(void);
+/**
+ * Provide the cad productisation snapshot operation used by this module and its client
+ * applications.
+ */
 UmiStatus umi_cad_productisation_snapshot(
     UmiProductApplicationAdoptionSnapshot *out_snapshot);
+/**
+ * Initialise cad product session from caller-provided values so later operations receive a
+ * known state.
+ */
 UmiStatus umi_cad_product_session_init(
     UmiProductApplicationSession *out_session);
 /* Build welcome-screen workspace choices from the canonical Framework profile. */

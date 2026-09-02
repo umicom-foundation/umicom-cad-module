@@ -23,8 +23,16 @@
 extern "C" {
 #endif
 
+/**
+ * Provide the cad readiness report operation used by this module and its client
+ * applications.
+ */
 UmiStatus umi_cad_readiness_report(
     UmiApplicationReadinessReport *out_report);
+/**
+ * Provide the cad readiness next feature operation used by this module and its client
+ * applications.
+ */
 const UmiExperienceFeatureDefinition *umi_cad_readiness_next_feature(void);
 
 #ifdef __cplusplus
