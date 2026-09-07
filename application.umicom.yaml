@@ -6,6 +6,8 @@ application:
   short_name: CAD
   version: 0.1.0
   executable: umicom-cad-console
+  native_executable: umicom-cad
+  console_executable: umicom-cad-console
   aliases: [cad]
 
 framework:
@@ -14,6 +16,8 @@ framework:
 
 frontends:
   - console
+  # Shared Framework GTK layout preview; domain services require controllers.
+  - gtk
 
 entry:
   kind: workbench
