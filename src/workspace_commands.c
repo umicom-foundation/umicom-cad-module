@@ -60,3 +60,34 @@ const UmiApplicationCommandSurface *umi_cad_workspace_commands(
 {
     return runtime != NULL ? &runtime->commands : NULL;
 }
+
+/* Product adapters contribute identity, not a second context store. Reuse the
+ * Framework review so all applications have the same stale-state guarantees. */
+UmiStatus umi_cad_workspace_context_review(
+    UmiApplicationWorkspaceRuntime *runtime,
+    const UmiApplicationContextChange *changes, size_t count,
+    UmiApplicationContextReview **out_review)
+{
+    const UmiApplicationExperienceDefinition *experience = umi_cad_runtime_experience();
+    if (runtime == NULL || experience == NULL || runtime->session.experience != experience)
+        return UMI_STATUS_INVALID_ARGUMENT;
+    return umi_application_context_review_prepare(runtime, changes, count, out_review);
+}
+
+UmiStatus umi_cad_workspace_context_apply(
+    UmiApplicationWorkspaceRuntime *runtime, UmiApplicationContextReview *review)
+{
+    const UmiApplicationExperienceDefinition *experience = umi_cad_runtime_experience();
+    if (runtime == NULL || experience == NULL || runtime->session.experience != experience)
+        return UMI_STATUS_INVALID_ARGUMENT;
+    return umi_application_context_review_apply(runtime, review);
+}
+
+UmiStatus umi_cad_workspace_clear_context(
+    UmiApplicationWorkspaceRuntime *runtime, const char *group_id)
+{
+    const UmiApplicationExperienceDefinition *experience = umi_cad_runtime_experience();
+    if (runtime == NULL || experience == NULL || runtime->session.experience != experience)
+        return UMI_STATUS_INVALID_ARGUMENT;
+    return umi_application_workspace_runtime_clear_context(runtime, group_id);
+}
